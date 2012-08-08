@@ -14,7 +14,7 @@ public:
     void PutMsg(DWORD msg)
     {
         ::EnterCriticalSection(&m_critSec);
-        push(msg);
+        if (size() < 5) push(msg);
         ::LeaveCriticalSection(&m_critSec);
     }
     BOOL Waiting()
